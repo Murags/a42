@@ -306,138 +306,100 @@ const Header = () => {
   );
 };
 
-// Update the Contact Section with email functionality
-const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Construct email body
-    const emailBody = `
-Name: ${formData.name}
-Email: ${formData.email}
-
-Message:
-${formData.message}
-    `;
-
-    // Create mailto link
-    const mailtoLink = `mailto:getrude@a42.co.ke?subject=Website Inquiry from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
-
-    // Open default email client
-    window.location.href = mailtoLink;
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  return (
-    <motion.section
-      id="contact"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="py-24 sm:py-32 bg-luxury-navy relative overflow-hidden"
+// Simplified Contact Section
+<motion.section
+  id="contact"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  className="py-24 sm:py-32 bg-luxury-navy relative overflow-hidden"
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    {/* Section Header */}
+    <motion.div
+      variants={fadeInUp}
+      className="text-center mb-20"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <motion.div
-          variants={fadeInUp}
-          className="text-center mb-20"
-        >
-          <span className="text-luxury-gold uppercase tracking-[0.2em] text-sm">Contact Us</span>
-          <h2 className="mt-3 text-4xl font-serif text-luxury-cream">
-            Get in Touch
-          </h2>
-          <div className="w-24 h-[2px] bg-luxury-gold mx-auto mt-6"></div>
-        </motion.div>
+      <span className="text-luxury-gold uppercase tracking-[0.2em] text-sm">Contact Us</span>
+      <h2 className="mt-3 text-4xl font-serif text-luxury-cream">
+        Get in Touch
+      </h2>
+      <div className="w-24 h-[2px] bg-luxury-gold mx-auto mt-6"></div>
+    </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Form */}
-          <motion.form
-            variants={fadeInUp}
-            onSubmit={handleSubmit}
-            className="space-y-6"
-          >
-            <div>
-              <label className="block text-luxury-cream text-sm font-medium mb-2">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-luxury-gold/20 rounded-lg bg-luxury-cream/10 text-luxury-cream focus:outline-none focus:border-luxury-gold"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-luxury-cream text-sm font-medium mb-2">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-luxury-gold/20 rounded-lg bg-luxury-cream/10 text-luxury-cream focus:outline-none focus:border-luxury-gold"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-luxury-cream text-sm font-medium mb-2">Message</label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-luxury-gold/20 rounded-lg bg-luxury-cream/10 text-luxury-cream focus:outline-none focus:border-luxury-gold"
-                rows="5"
-                required
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full py-3 bg-luxury-gold text-luxury-navy rounded-lg hover:bg-luxury-cream transition-all duration-300"
-            >
-              Send Message
-            </button>
-          </motion.form>
-
-          {/* Contact Details */}
-          <motion.div
-            variants={fadeInUp}
-            className="space-y-6"
-          >
-            <div>
-              <h5 className="text-2xl font-serif text-luxury-gold">Contact Information</h5>
-              <p className="text-luxury-cream/80 leading-relaxed mt-4">
-                For direct inquiries, please email us at:
-              </p>
-              <a
-                href="mailto:getrude@a42.co.ke"
-                className="text-luxury-gold mt-2 hover:text-luxury-cream transition-colors duration-300 block"
-              >
-                getrude@a42.co.ke
-              </a>
-            </div>
-            <div>
-              <h5 className="text-2xl font-serif text-luxury-gold">Office Location</h5>
-              <p className="text-luxury-cream/80 leading-relaxed mt-4">
-                Nairobi, Kenya
-              </p>
-            </div>
-          </motion.div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      {/* Contact Form */}
+      <motion.form
+        variants={fadeInUp}
+        onSubmit={(e) => {
+          e.preventDefault();
+          const name = e.target.name.value;
+          const message = e.target.message.value;
+          window.location.href = `mailto:info@a42.co.ke?subject=Inquiry from ${name}&body=${encodeURIComponent(message)}`;
+        }}
+        className="space-y-6"
+      >
+        <div>
+          <label className="block text-luxury-cream text-sm font-medium mb-2">Name</label>
+          <input
+            type="text"
+            name="name"
+            className="w-full px-4 py-3 border border-luxury-gold/20 rounded-lg bg-luxury-cream/10 text-luxury-cream focus:outline-none focus:border-luxury-gold"
+            required
+          />
         </div>
-      </div>
-    </motion.section>
-  );
-};
+        <div>
+          <label className="block text-luxury-cream text-sm font-medium mb-2">Message</label>
+          <textarea
+            name="message"
+            className="w-full px-4 py-3 border border-luxury-gold/20 rounded-lg bg-luxury-cream/10 text-luxury-cream focus:outline-none focus:border-luxury-gold"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          className="w-full py-3 bg-luxury-gold text-luxury-navy rounded-lg hover:bg-luxury-cream transition-all duration-300"
+        >
+          Send Message
+        </button>
+      </motion.form>
+
+      {/* Contact Information */}
+      <motion.div
+        variants={fadeInUp}
+        className="space-y-6"
+      >
+        <div>
+          <h5 className="text-2xl font-serif text-luxury-gold">Contact Information</h5>
+          <p className="text-luxury-cream/80 leading-relaxed mt-4">
+            For direct inquiries, please email us at:
+          </p>
+          <a
+            href="mailto:info@a42.co.ke"
+            className="text-luxury-gold mt-2 hover:text-luxury-cream transition-colors duration-300 block"
+          >
+            info@a42.co.ke
+          </a>
+        </div>
+        <div>
+          <h5 className="text-2xl font-serif text-luxury-gold">Office Location</h5>
+          <p className="text-luxury-cream/80 leading-relaxed mt-4">
+            Nairobi, Kenya
+          </p>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+
+  {/* Decorative elements */}
+  <motion.div
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 45 }}
+    transition={{ duration: 1.5 }}
+    className="absolute top-0 right-0 w-96 h-96 border border-luxury-gold/10"
+  />
+</motion.section>
 
 function App() {
   // Add this state at the top of your App component
@@ -965,7 +927,100 @@ function App() {
       </motion.section>
 
       {/* Contact Section */}
-      <ContactSection />
+      <motion.section
+        id="contact"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 sm:py-32 bg-luxury-navy relative overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* Section Header */}
+          <motion.div
+            variants={fadeInUp}
+            className="text-center mb-20"
+          >
+            <span className="text-luxury-gold uppercase tracking-[0.2em] text-sm">Contact Us</span>
+            <h2 className="mt-3 text-4xl font-serif text-luxury-cream">
+              Get in Touch
+            </h2>
+            <div className="w-24 h-[2px] bg-luxury-gold mx-auto mt-6"></div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Contact Form */}
+            <motion.form
+              variants={fadeInUp}
+              onSubmit={(e) => {
+                e.preventDefault();
+                const name = e.target.name.value;
+                const message = e.target.message.value;
+                window.location.href = `mailto:info@a42.co.ke?subject=Inquiry from ${name}&body=${encodeURIComponent(message)}`;
+              }}
+              className="space-y-6"
+            >
+              <div>
+                <label className="block text-luxury-cream text-sm font-medium mb-2">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  className="w-full px-4 py-3 border border-luxury-gold/20 rounded-lg bg-luxury-cream/10 text-luxury-cream focus:outline-none focus:border-luxury-gold"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-luxury-cream text-sm font-medium mb-2">Message</label>
+                <textarea
+                  name="message"
+                  className="w-full px-4 py-3 border border-luxury-gold/20 rounded-lg bg-luxury-cream/10 text-luxury-cream focus:outline-none focus:border-luxury-gold"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 bg-luxury-gold text-luxury-navy rounded-lg hover:bg-luxury-cream transition-all duration-300"
+              >
+                Send Message
+              </button>
+            </motion.form>
+
+            {/* Contact Information */}
+            <motion.div
+              variants={fadeInUp}
+              className="space-y-6"
+            >
+              <div>
+                <h5 className="text-2xl font-serif text-luxury-gold">Contact Information</h5>
+                <p className="text-luxury-cream/80 leading-relaxed mt-4">
+                  For direct inquiries, please email us at:
+                </p>
+                <a
+                  href="mailto:info@a42.co.ke"
+                  className="text-luxury-gold mt-2 hover:text-luxury-cream transition-colors duration-300 block"
+                >
+                  info@a42.co.ke
+                </a>
+              </div>
+              <div>
+                <h5 className="text-2xl font-serif text-luxury-gold">Office Location</h5>
+                <p className="text-luxury-cream/80 leading-relaxed mt-4">
+                  Nairobi, Kenya
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Decorative elements */}
+        <motion.div
+          initial={{ opacity: 0, rotate: 0 }}
+          animate={{ opacity: 1, rotate: 45 }}
+          transition={{ duration: 1.5 }}
+          className="absolute top-0 right-0 w-96 h-96 border border-luxury-gold/10"
+        />
+      </motion.section>
+
       <Footer />
     </motion.div>
   );
