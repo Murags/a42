@@ -180,7 +180,11 @@ const Footer = () => (
       <div className="flex flex-col sm:flex-row justify-between items-center">
         {/* Logo and Company Name */}
         <div className="flex items-center mb-4 sm:mb-0">
-          <div className="text-luxury-gold text-2xl font-serif">A42 Consultants</div>
+          <img
+            src="/a42-icon.png"
+            alt="A42 Consultants"
+            className="h-12 w-auto"
+          />
         </div>
 
         {/* Navigation Links */}
@@ -436,8 +440,15 @@ function App() {
         className="bg-luxury-navy/95 backdrop-blur-sm fixed w-full z-50"
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 py-4 sm:py-5">
-          <h1 className="text-luxury-gold text-2xl sm:text-3xl font-serif tracking-wider">A42</h1>
-          {/* Mobile Menu Button (you'll need to implement the toggle functionality) */}
+          <div className="flex items-center">
+              <img
+                src="/a42-icon.png"
+                alt="A42 Consultants"
+                className="h-16 sm:h-20 w-auto cursor-pointer"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+          </div>
+
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-luxury-cream"
@@ -446,7 +457,7 @@ function App() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          {/* Desktop Navigation */}
+
           <div className="hidden md:flex space-x-8 text-sm tracking-widest">
             <button
               onClick={() => scrollToSection('services')}
@@ -474,7 +485,6 @@ function App() {
             </button>
           </div>
         </div>
-        {/* Mobile Navigation Menu (hidden by default) */}
         <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden px-4 py-2 bg-luxury-navy/95`}>
           <button
             onClick={() => scrollToSection('services')}
