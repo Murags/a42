@@ -541,7 +541,7 @@ function App() {
             <motion.span
               variants={fadeInUp}
               custom={1}
-              className="text-luxury-gold uppercase tracking-[0.2em] text-xs sm:text-sm"
+              className="text-luxury-gold uppercase tracking-[0.2em] text-xs sm:text-sm whitespace-normal sm:whitespace-nowrap"
             >
               Premier Property Analytics & Advisory in Kenya
             </motion.span>
@@ -551,7 +551,7 @@ function App() {
               custom={2}
               className="relative"
             >
-              <h2 className="text-[3.5rem] sm:text-[5rem] font-serif leading-[1.1] font-light relative z-10">
+              <h2 className="text-[2.8rem] sm:text-[5rem] font-serif leading-[1.2] sm:leading-[1.1] font-light relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -560,7 +560,7 @@ function App() {
                     ease: [0.22, 1, 0.36, 1],
                     delay: 1.2
                   }}
-                  className="relative inline-block"
+                  className="relative block sm:inline-block"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-luxury-cream/80 to-transparent -z-10 blur-sm"></span>
                   <span className="text-luxury-navy relative z-10">Strategic Real</span>
@@ -573,7 +573,7 @@ function App() {
                     ease: [0.22, 1, 0.36, 1],
                     delay: 1.4
                   }}
-                  className="relative inline-block"
+                  className="relative block sm:inline-block"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-luxury-cream/80 to-transparent -z-10 blur-sm"></span>
                   <span className="text-luxury-gold relative z-10">Estate Intelligence</span>
@@ -586,10 +586,10 @@ function App() {
                     ease: [0.22, 1, 0.36, 1],
                     delay: 1.6
                   }}
-                  className="relative inline-block"
+                  className="relative block sm:inline-block mb-2 sm:mb-0"
                 >
-                  <span className="absolute inset-0 bg-gradient-to-r from-luxury-cream/80 to-transparent -z-10 blur-sm"></span>
-                  <span className="text-luxury-cream relative z-10">& Advisory</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-luxury-cream to-luxury-cream/90 -z-10 blur-sm"></span>
+                  <span className="text-luxury-gold relative z-10">&nbsp;& Advisory</span>
                 </motion.div>
               </h2>
             </motion.div>
@@ -819,24 +819,24 @@ function App() {
 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                   <AnimatedStat
-                    value={2}
-                    prefix="KSh "
-                    suffix="B+"
+                    value={209}
+                    prefix="USD "
+                    suffix="M+"
                     label="Portfolio Value Analyzed"
                   />
                   <AnimatedStat
-                    value={50}
-                    suffix="+"
-                    label="Market Reports Generated"
-                  />
-                  <AnimatedStat
-                    value={15}
-                    suffix="+"
-                    label="Corporate Partnerships"
+                    value={5}
+                    label="Major Projects Completed"
                   />
                   <AnimatedStat
                     value={4}
-                    label="Major Counties Covered"
+                    label="Key Sectors Served"
+                    // Pension & Investment, Residential, Government, Financial Services
+                  />
+                  <AnimatedStat
+                    value={3}
+                    label="Counties Covered"
+                    // Nairobi, Mombasa, Nairobi Metropolitan
                   />
                 </div>
               </motion.div>
